@@ -22,6 +22,7 @@ sap.ui.define([
 	"use strict";
 	var ofvalue;
 	var oseldate;
+	
 	var oselM;
 	var oExportFlag;
 	var ofilterPress;
