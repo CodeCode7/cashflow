@@ -1,0 +1,216 @@
+{
+    "resources": [
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Utils/CustomFormatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Utils/CustomFormatter.js"
+        },
+        {
+            "name": "Utils/Formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Utils/Formatter.js"
+        },
+        {
+            "name": "controller/CashFlowHome-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/CashFlowHome.controller.js"
+        },
+        {
+            "name": "controller/ErrorHandler-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/VariantsManagement-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/VariantsManagement.js"
+        },
+        {
+            "name": "css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/ZC_CASHFLOW_PROJECT_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/Z_CASHFLOW_COM_CONSUMPTION_CDS/metadata.xml"
+        },
+        {
+            "name": "localService/Z_FI_CC_FILTER_CDS/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/data.json"
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "serviceBinding-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "serviceBinding.js"
+        },
+        {
+            "name": "tmp/Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "tmp/Component.js"
+        },
+        {
+            "name": "tmp/Utils/CustomFormatter.js"
+        },
+        {
+            "name": "tmp/Utils/Formatter.js"
+        },
+        {
+            "name": "tmp/controller/CashFlowHome.controller.js"
+        },
+        {
+            "name": "tmp/controller/ErrorHandler.js"
+        },
+        {
+            "name": "tmp/controller/VariantsManagement.js"
+        },
+        {
+            "name": "tmp/css/style.css"
+        },
+        {
+            "name": "tmp/extended_runnable_file.html"
+        },
+        {
+            "name": "tmp/i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "tmp/index.html"
+        },
+        {
+            "name": "tmp/localService/ZC_CASHFLOW_PROJECT_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/Z_CASHFLOW_COM_CONSUMPTION_CDS/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/Z_FI_CC_FILTER_CDS/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/mockserver.js"
+        },
+        {
+            "name": "tmp/manifest.json"
+        },
+        {
+            "name": "tmp/model/data.json"
+        },
+        {
+            "name": "tmp/model/models.js"
+        },
+        {
+            "name": "tmp/serviceBinding.js"
+        },
+        {
+            "name": "tmp/view/CashFlowHome.view.xml"
+        },
+        {
+            "name": "tmp/view/Popover.fragment.xml"
+        },
+        {
+            "name": "tmp-dbg/Component.js"
+        },
+        {
+            "name": "tmp-dbg/Utils/CustomFormatter.js"
+        },
+        {
+            "name": "tmp-dbg/Utils/Formatter.js"
+        },
+        {
+            "name": "tmp-dbg/controller/CashFlowHome.controller.js"
+        },
+        {
+            "name": "tmp-dbg/controller/ErrorHandler.js"
+        },
+        {
+            "name": "tmp-dbg/controller/VariantsManagement.js"
+        },
+        {
+            "name": "tmp-dbg/css/style.css"
+        },
+        {
+            "name": "tmp-dbg/localService/mockserver.js"
+        },
+        {
+            "name": "tmp-dbg/model/models.js"
+        },
+        {
+            "name": "tmp-dbg/serviceBinding.js"
+        },
+        {
+            "name": "view/CashFlowHome.view.xml"
+        },
+        {
+            "name": "view/Popover.fragment.xml"
+        }
+    ]
+}

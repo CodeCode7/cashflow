@@ -1,0 +1,161 @@
+/* Enter your custom styles here */
+
+.sapUiSizeCompact .sapMTB {
+    height: 3rem !important;
+}
+
+.sapMCustomTile {
+    display: inline-block;
+    box-sizing: border-box;
+    -webkit-transition-property: transform3d;
+    -webkit-transition-duration: 0.2s;
+    transition-property: transform3d;
+    transition-duration: 0.2s;
+    width: 18em !important;
+    height: 12em !important;
+    margin: 1rem!important;
+}
+
+.sapMCustomTileBAL {
+    display: inline-block;
+    box-sizing: border-box;
+    -webkit-transition-property: transform3d;
+    -webkit-transition-duration: 0.2s;
+    transition-property: transform3d;
+    transition-duration: 0.2s;
+    width: 21em !important;
+    height: 12em !important;
+    margin: 1rem!important;
+}
+
+.tileborder {
+    border-radius: 10px 10px 10px 10px!important;
+    -moz-border-radius: 10px 10px 10px 10px!important;
+    -webkit-border-radius: 10px 10px 10px 10px!important;
+    border: 2px solid #b8b6b8!important;
+}
+
+div#__data23 {
+    padding-left: 0px;
+}
+
+
+/*div#__data29 {
+    padding-left: 90px;
+}*/
+
+
+/*
+div#__data29 {
+    padding-left: 10px;
+}
+*/
+
+.csstitle {
+    font-size: x-large;
+}
+
+
+/* Styles go here */
+
+
+/* PRINT STYLES */
+
+@media print {
+    /* usage of !important hard overwrites, because UI5 uses inline style directives (style="width:990px")  */
+    /* define print page default settings */
+    @page {
+        size: landscape;
+        margin: 1.5cm 1cm;
+    }
+    /* scale content to fit print page */
+    html,
+    body {
+        width: 100% !important;
+        height: auto !important;
+    }
+    /* reset body */
+    body {
+        margin: 0;
+        padding: 0;
+        float: none;
+        color: #000;
+    }
+    /* helper class to allow selective hiding elements from printing (ex print button)  */
+    .uoNoPrint {
+        display: none;
+    }
+    /* fix overflow scrolling */
+    * {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+    }
+    /* auto expand collapsed panel contents */
+    .sapMPanelExpandablePart {
+        display: block !important;
+    }
+    /* disable panel content border */
+    .sapMPanelContent {
+        border: 0 !important;
+    }
+    /* reset flexed textareas height */
+    .sapMTextArea>.sapMTextAreaInner {
+        height: auto !important;
+    }
+    span#__xmlview0--vm-text-inner {
+        font-size: 0.875rem !important;
+    }
+    .sapContrast.sapUiCompVarMngmt .sapUICompVarMngmtClickable,
+    .sapContrast .sapUiCompVarMngmt .sapUICompVarMngmtClickable {
+        color: #cae4fb;
+        text-shadow: 0 0 0.125rem #000000;
+        font-size: 0.875rem !important;
+    }
+    .sapUiCompVarMngmt .sapUICompVarMngmtClickable {
+        cursor: pointer;
+        color: #346187;
+        text-shadow: 0 0 0.125rem #ffffff !important;
+        font-size: 0.875rem !important;
+    }
+    .sapContrast.sapMTitle,
+    .sapContrast .sapMTitle {
+        color: #fafafa;
+        text-shadow: 0 0 0.125rem #000000 !important;
+        font-size: 0.875rem !important;
+    }
+    .varclase {
+        font-size: 0.875rem !important;
+    }
+    .sapUiCompVarMngmt .sapMTitle.sapUICompVarMngmtTitle {
+        font-size: 0.875rem !important;
+    }
+    .sapUiSizeCompact .sapMBtnContent {
+        font-size: 1.1rem !important;
+        line-height: 1.500rem;
+    }
+    bdi {
+        font-size: 1.1rem !important;
+    }
+    /* custom css prototypes for addtional used containers */
+}
+
+.sapUiSizeCompact .sapMBtnInner.sapMBtnText {
+    padding-left: 0.4375rem;
+    padding-right: 0.4375rem;
+    font-size: 1.125rem !important;
+}
+
+.v-body-dimension-label,
+.v-body-dimension-value {
+    display: none;
+}
+
+.sapTntToolHeaderPopover.sapMOTAPopover.sapMPopover {
+    background-color: #fafafa !important;
+}
+
+.sapMPopover .sapMPopoverCont {
+    overflow: hidden;
+    margin: 0.55rem !important;
+    background-color: #ffffff;
+}

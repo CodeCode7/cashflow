@@ -1,0 +1,130 @@
+.sapUiSizeCompact .sapMTB {
+    height: 3rem!important
+}
+
+.sapMCustomTile,
+.sapMCustomTileBAL {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 12em!important;
+    margin: 1rem!important
+}
+
+.sapMCustomTile {
+    -webkit-transition-property: transform3d;
+    -webkit-transition-duration: .2s;
+    transition-property: transform3d;
+    transition-duration: .2s;
+    width: 18em!important
+}
+
+.sapMCustomTileBAL {
+    -webkit-transition-property: transform3d;
+    -webkit-transition-duration: .2s;
+    transition-property: transform3d;
+    transition-duration: .2s;
+    width: 21em!important
+}
+
+.tileborder {
+    border-radius: 10px!important;
+    -moz-border-radius: 10px!important;
+    -webkit-border-radius: 10px 10px 10px 10px!important;
+    border: 2px solid #b8b6b8!important
+}
+
+div#__data23 {
+    padding-left: 0
+}
+
+.csstitle {
+    font-size: x-large
+}
+
+@media print {
+    .sapMTextArea>.sapMTextAreaInner,
+    body,
+    html {
+        height: auto!important
+    }
+    @page {
+        size: landscape;
+        margin: 1.5cm 1cm
+    }
+    body,
+    html {
+        width: 100%!important
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        float: none;
+        color: #000
+    }
+    .uoNoPrint {
+        display: none
+    }
+    * {
+        overflow-x: visible!important;
+        overflow-y: visible!important
+    }
+    .sapMPanelExpandablePart {
+        display: block!important
+    }
+    .sapMPanelContent {
+        border: 0!important
+    }
+    span#__xmlview0--vm-text-inner {
+        font-size: .875rem!important
+    }
+    .sapContrast .sapUiCompVarMngmt .sapUICompVarMngmtClickable,
+    .sapContrast.sapUiCompVarMngmt .sapUICompVarMngmtClickable {
+        color: #cae4fb;
+        text-shadow: 0 0 .125rem #000;
+        font-size: .875rem!important
+    }
+    .sapUiCompVarMngmt .sapUICompVarMngmtClickable {
+        cursor: pointer;
+        color: #346187;
+        text-shadow: 0 0 .125rem #fff!important;
+        font-size: .875rem!important
+    }
+    .sapContrast .sapMTitle,
+    .sapContrast.sapMTitle {
+        color: #fafafa;
+        text-shadow: 0 0 .125rem #000!important;
+        font-size: .875rem!important
+    }
+    .sapUiCompVarMngmt .sapMTitle.sapUICompVarMngmtTitle,
+    .varclase {
+        font-size: .875rem!important
+    }
+    .sapUiSizeCompact .sapMBtnContent {
+        font-size: 1.1rem!important;
+        line-height: 1.5rem
+    }
+    bdi {
+        font-size: 1.1rem!important
+    }
+}
+
+.sapUiSizeCompact .sapMBtnInner.sapMBtnText {
+    padding-left: .4375rem;
+    padding-right: .4375rem;
+    font-size: 1.125rem!important
+}
+
+.v-body-dimension-label,
+.v-body-dimension-value {
+    display: none
+}
+
+.sapTntToolHeaderPopover.sapMOTAPopover.sapMPopover {
+    background-color: #fafafa!important
+}
+
+.sapMPopover .sapMPopoverCont {
+    overflow: hidden;
+    margin: .55rem!important;
+    background-color: #fff
+}

@@ -1,0 +1,26 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="Z_CASHFLOW_COM_CONSUMPTION_CDS" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Z_CASHFLOW_COM_CONSUMPTIONType" sap:label="Consumption View For Donut Chart" sap:content-version="1">
+				<Key><PropertyRef Name="mon"/><PropertyRef Name="FLAG"/><PropertyRef Name="Company"/><PropertyRef Name="Month_Year"/></Key><Property Name="mon" Type="Edm.String" Nullable="false" MaxLength="7" sap:display-format="NonNegative" sap:label="Month/Year"/><Property Name="FLAG" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag"/><Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="Month_Year" Type="Edm.String" Nullable="false" MaxLength="7" sap:display-format="NonNegative" sap:label="Period/year"/><Property Name="Cashflow_Per" Type="Edm.Decimal" Precision="6" Scale="4"/><NavigationProperty Name="Parameters" Relationship="Z_CASHFLOW_COM_CONSUMPTION_CDS.assoc_2120E435D33B30B702A45F3DE7CD209E"
+					FromRole="ToRole_assoc_2120E435D33B30B702A45F3DE7CD209E" ToRole="FromRole_assoc_2120E435D33B30B702A45F3DE7CD209E" sap:filterable="false"/></EntityType>
+			<EntityType Name="Z_CASHFLOW_COM_CONSUMPTIONParameters" sap:semantics="parameters" sap:content-version="1">
+				<Key><PropertyRef Name="mon"/><PropertyRef Name="FLAG"/></Key><Property Name="mon" Type="Edm.String" Nullable="false" MaxLength="7" sap:display-format="NonNegative" sap:parameter="mandatory"
+					sap:label="Month/Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FLAG" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:parameter="mandatory"
+					sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="Set" Relationship="Z_CASHFLOW_COM_CONSUMPTION_CDS.assoc_2120E435D33B30B702A45F3DE7CD209E"
+					FromRole="FromRole_assoc_2120E435D33B30B702A45F3DE7CD209E" ToRole="ToRole_assoc_2120E435D33B30B702A45F3DE7CD209E"/></EntityType>
+			<Association Name="assoc_2120E435D33B30B702A45F3DE7CD209E" sap:content-version="1"><End Type="Z_CASHFLOW_COM_CONSUMPTION_CDS.Z_CASHFLOW_COM_CONSUMPTIONParameters" Multiplicity="1"
+				Role="FromRole_assoc_2120E435D33B30B702A45F3DE7CD209E"/><End Type="Z_CASHFLOW_COM_CONSUMPTION_CDS.Z_CASHFLOW_COM_CONSUMPTIONType" Multiplicity="*"
+				Role="ToRole_assoc_2120E435D33B30B702A45F3DE7CD209E"/></Association>
+			<EntityContainer Name="Z_CASHFLOW_COM_CONSUMPTION_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="Z_CASHFLOW_COM_CONSUMPTIONSet" EntityType="Z_CASHFLOW_COM_CONSUMPTION_CDS.Z_CASHFLOW_COM_CONSUMPTIONType"
+				sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="Z_CASHFLOW_COM_CONSUMPTION" EntityType="Z_CASHFLOW_COM_CONSUMPTION_CDS.Z_CASHFLOW_COM_CONSUMPTIONParameters"
+				sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="assoc_2120E435D33B30B702A45F3DE7CD209E"
+					Association="Z_CASHFLOW_COM_CONSUMPTION_CDS.assoc_2120E435D33B30B702A45F3DE7CD209E" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Z_CASHFLOW_COM_CONSUMPTION" Role="FromRole_assoc_2120E435D33B30B702A45F3DE7CD209E"/><End EntitySet="Z_CASHFLOW_COM_CONSUMPTIONSet" Role="ToRole_assoc_2120E435D33B30B702A45F3DE7CD209E"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/Z_CASHFLOW_COM_CONSUMPTION_CDS/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/Z_CASHFLOW_COM_CONSUMPTION_CDS/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,419 @@
+<mvc:View controllerName="com.accenture.CashFlow.controller.CashFlowHome" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:micro="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:l="sap.ui.layout"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:suite="sap.suite.ui.commons" xmlns:v="sap.ui.comp.variants"
+	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<App id="idAppControl">
+		<pages>
+			
+			<Page id="idpgage" title="{i18n>title}" class="sapUiSizeCompact">
+				<customHeader >
+					<Bar>
+						<contentLeft>
+							<Text id="idheaderdate"></Text>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="{i18n>title}" class="csstitle"/>
+						</contentMiddle>
+						<contentRight>
+							<Text text="{i18n>txtCurrency}"></Text>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<tnt:ToolHeader>
+						<Button icon="sap-icon://home" type="Transparent" press="onHomePress">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>
+						<ToolbarSpacer width="20px"/>
+						<!--	<v:VariantManagement id="vm" class="varclase" select="onSelect" save="onSave" enabled="true" manage="onManage" showExecuteOnSelection="true"
+							showShare="false">
+							<v:variantItems>
+								<v:VariantItem text="VAR_NAME" key="VAR_KEY"></v:VariantItem>
+							</v:variantItems>
+						</v:VariantManagement>-->
+						<v:VariantManagement variantItems="{variantModel>/Variants}" standardItemText="Standard" select="onSelectVariant"
+							save="onSaveAsVariant" enabled="true" manage="onManageVariant" defaultVariantKey="{variantModel>/defVariantKey}"
+							showExecuteOnSelection="false" showShare="false" id="variantManagement">
+							<v:variantItems>
+								<v:VariantItem text="{variantModel>VariantName}" key="{variantModel>VariantKey}"/>
+							</v:variantItems>
+						</v:VariantManagement>
+						<Button text="{i18n>txtReport}" type="Transparent" press="onReportPress">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="Low"/>
+							</layoutData>
+						</Button>
+						<Button text="{i18n>txtFilter}" type="Transparent" press="onFilterPress1" data:targetId="table">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="Low"/>
+							</layoutData>
+						</Button>
+						<Button text="{i18n>txtCharts}" type="Transparent" press="onCharts">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="Low"/>
+							</layoutData>
+						</Button>
+					</tnt:ToolHeader>
+					<HBox class="sapUiForceWidthAuto sapUiMediumMarginBeginEnd">
+						<Label text="" width="50px"></Label>
+						<CustomTile class="tileborder sapMCustomTileBAL " id="id1">
+							<content>
+								<VBox>
+									<l:VerticalLayout>
+										<l:HorizontalLayout >
+											<Toolbar id="idBarLME" width="100%">
+												<Text text="{i18n>txtLMEnd}" class="sapUiTinyMargin "></Text>
+											</Toolbar>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="{i18n>txtNet}" class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtNet1" width="7rem"></Text>
+											<core:Icon id="idlastIcon1" class="size1 " width="2rem"></core:Icon>
+											<Text id="idlastNet1" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin lay">
+											<Text text="{i18n>txtInflow} " class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtInflow1" width="7rem"></Text>
+											<core:Icon id="idlastIcon2" width="2rem"></core:Icon>
+											<Text id="idlastInflow1" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="{i18n>txtOutflow} " class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtOutflow1" width="7rem"></Text>
+											<core:Icon id="idlastIcon3" width="2rem"></core:Icon>
+											<Text id="idlastOutflow1" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout></l:HorizontalLayout>
+									</l:VerticalLayout>
+								</VBox>
+							</content>
+						</CustomTile>
+						<CustomTile class="tileborder sapMCustomTileBAL" id="id2">
+							<content>
+								<VBox>
+									<l:VerticalLayout>
+										<l:HorizontalLayout>
+											<Toolbar id="idBarCM" width="100%">
+												<Text text="{i18n>txtCMEnd}" class="sapUiTinyMargin "></Text>
+											</Toolbar>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="{i18n>txtNet} " class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtNet2" width="7rem"></Text>
+											<core:Icon id="idCurrentIcon1" width="2rem"></core:Icon>
+											<Text id="idCurrentNet" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin lay">
+											<Text text="{i18n>txtInflow} " class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtInflow2" width="7rem"></Text>
+											<core:Icon id="idCurrentIcon2" width="2rem"></core:Icon>
+											<Text id="idCurrentInflow" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="{i18n>txtOutflow}" class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtOutflow2" width="7rem"></Text>
+											<core:Icon id="idCurrentIcon3" class="size1 " width="2rem"></core:Icon>
+											<Text id="idCurrentOutflow" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout></l:HorizontalLayout>
+									</l:VerticalLayout>
+								</VBox>
+							</content>
+						</CustomTile>
+						<CustomTile class="tileborder sapMCustomTileBAL" id="id3">
+							<content>
+								<VBox>
+									<l:VerticalLayout>
+										<l:HorizontalLayout>
+											<Toolbar id="idBarNM" width="100%">
+												<Text text="{i18n>txtNMEnd}" class="sapUiTinyMargin "></Text>
+											</Toolbar>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="{i18n>txtNet} " class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtNet3" width="7rem"></Text>
+											<core:Icon id="idNextIcon1" width="2rem"></core:Icon>
+											<Text id="idNextMonthNet" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin lay">
+											<Text text="{i18n>txtInflow} " class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtInflow3" width="7rem"></Text>
+											<core:Icon id="idNextIcon2" width="2rem"></core:Icon>
+											<Text id="idNextMonthInflow" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="{i18n>txtOutflow}" class="sapUiTinyMarginEnd" width="4rem"></Text>
+											<Text id="idtxtOutflow3" width="7rem"></Text>
+											<core:Icon id="idNextIcon3" width="2rem"></core:Icon>
+											<Text id="idNextMonthOutflow" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout></l:HorizontalLayout>
+									</l:VerticalLayout>
+								</VBox>
+							</content>
+						</CustomTile>
+						<CustomTile class="tileborder sapMCustomTileBAL" id="id4" visible="false">
+							<content>
+								<VBox>
+									<l:VerticalLayout>
+										<l:HorizontalLayout>
+											<Toolbar id="idBVLM" width="100%">
+												<Text text="{i18n>txtLMEnd}" class="sapUiTinyMargin "></Text>
+											</Toolbar>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="{i18n>txtOpenBal} " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtOpenBal1" width="7rem"></Text>
+											<core:Icon id="idLastBankIcon1" width="2rem"></core:Icon>
+											<Text id="idLastOpen" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin lay">
+											<Text text="Net Balance " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtNetBal1" width="7rem"></Text>
+											<core:Icon id="idLastBankIcon2" width="2rem"></core:Icon>
+											<Text id="idLastNetBal" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="Ending Balance " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtEndBal1" width="7rem"></Text>
+											<core:Icon id="idLastBankIcon3" width="2rem"></core:Icon>
+											<Text id="idLastEndBal" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout></l:HorizontalLayout>
+									</l:VerticalLayout>
+								</VBox>
+							</content>
+						</CustomTile>
+						<CustomTile class="tileborder sapMCustomTileBAL" id="id5" visible="false">
+							<content>
+								<VBox>
+									<l:VerticalLayout>
+										<l:HorizontalLayout>
+											<Toolbar id="idBVCM" width="100%">
+												<Text text="Current Month" class="sapUiTinyMargin "></Text>
+											</Toolbar>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="Opening Balance " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtOpenBal2" width="7rem"></Text>
+											<core:Icon id="idCurrentBankIcon1" color="green" width="2rem"></core:Icon>
+											<Text id="idCurrentOpenBal" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin lay">
+											<Text text="Net Balance " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtNetBal2" width="7rem"></Text>
+											<core:Icon id="idCurrentBankIcon2" width="2rem"></core:Icon>
+											<Text id="idCurrentNetBal" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="Ending Balance " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtEndBal2" width="7rem"></Text>
+											<core:Icon id="idCurrentBankIcon3" width="2rem"></core:Icon>
+											<Text id="idCurrentEndBal" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout></l:HorizontalLayout>
+									</l:VerticalLayout>
+								</VBox>
+							</content>
+						</CustomTile>
+						<CustomTile class="tileborder sapMCustomTileBAL" id="id6" visible="false">
+							<content>
+								<VBox>
+									<l:VerticalLayout>
+										<l:HorizontalLayout>
+											<Toolbar id="idBVNM" width="100%">
+												<Text text="Next Month" class="sapUiTinyMargin "></Text>
+											</Toolbar>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="Opening Balance " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtOpenBal3" width="7rem"></Text>
+											<core:Icon id="idNextBankIcon1" width="2rem"></core:Icon>
+											<Text id="idNextOpenBal" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin lay">
+											<Text text="Net Balance " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtNetBal3" width="7rem"></Text>
+											<core:Icon id="idNextBankIcon2" width="2rem"></core:Icon>
+											<Text id="idNextNetBal" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="sapUiTinyMargin">
+											<Text text="Ending Balance " class="sapUiTinyMarginEnd" width="7rem"></Text>
+											<Text id="idtxtEndBal3" width="7rem"></Text>
+											<core:Icon id="idNextBankIcon3" width="2rem"></core:Icon>
+											<Text id="idNextEndBal" class="" width="4rem"></Text>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout></l:HorizontalLayout>
+									</l:VerticalLayout>
+								</VBox>
+							</content>
+						</CustomTile>
+					</HBox>
+					<VBox>
+						<HBox>
+							<MessageStrip type="Information" showIcon="true" id="msgid1" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop"/>
+							<!--	<Label text=" " width ="100%"></Label>
+							<Label text=" " width ="350px"></Label>-->
+							<Label text="" width="70px"></Label>
+							<MessageStrip id="msgid2" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" type="Information" showIcon="true" visible="false"/>
+							<!--	<Slider value="40"></Slider>
+							<Slider min="40" max="60" value="40"></Slider>-->
+						</HBox>
+						<l:Grid>
+							<suite:ChartContainer id="idChartContainer" title="{i18n>chartTitle}" showFullScreen="true" showPersonalization="false"
+								autoAdjustHeight="false" showLegend="true">
+								<suite:content>
+									<suite:ChartContainerContent id="idChart1" icon="sap-icon://vertical-stacked-chart" title="{i18n>chartTitle1}">
+										<suite:content>
+											<viz:Popover id="idPopOver2"></viz:Popover>
+											<viz:VizFrame id="idVizFrame2" uiConfig="{applicationSet:'fiori'}" width="900px" height='400px' renderComplete="onRenderComplete"></viz:VizFrame>
+										</suite:content>
+									</suite:ChartContainerContent>
+									<suite:ChartContainerContent id="idChart2" icon="sap-icon://table-view" title="{i18n>chartTitle2}">
+										<suite:content>
+											<Table id="table15" items="{/CashFlowSet}" width="1000px" updateFinished="onRenderComplete">
+												<columns>
+													<Column hAlign="Begin">
+														<Text text="MonthYear"/>
+													</Column>
+													<Column hAlign="Begin">
+														<Text text="NetCash"/>
+													</Column>
+													<Column hAlign="Begin">
+														<Text text="CashInflow"/>
+													</Column>
+													<Column hAlign="Begin">
+														<Text text="CashOutflow"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem >
+														<cells>
+															<Text text="{MonthYear}"/>
+															<Text text="{path: 'NetCash', formatter:'com.accenture.CashFlow.Utils.Formatter.numFormat'}"/>
+															<Text text="{path: 'CashInflow', formatter:'com.accenture.CashFlow.Utils.Formatter.numFormat'}"/>
+															<Text text="{path: 'CashOutflow', formatter:'com.accenture.CashFlow.Utils.Formatter.numFormat'}"/>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+										</suite:content>
+									</suite:ChartContainerContent>
+								</suite:content>
+								<suite:layoutData>
+									<l:GridData span="L8 M8 S12"></l:GridData>
+								</suite:layoutData>
+							</suite:ChartContainer>
+							<FlexBox alignItems="Start" justifyContent="End">
+								<items>
+									<VBox>
+										<viz:Popover id="idPopOver"></viz:Popover>
+										<viz:VizFrame class="" id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height='300px' width="400px" vizType='donut'
+											renderComplete="onDonutRenderComplete"></viz:VizFrame>
+										<Table id="table1" items="{oResultsModel1>/oDonut}" includeItemInSelection="true" width="350px">
+											<columns>
+												<Column hAlign="Begin">
+													<Text text="Flow"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="Period"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="Object"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem >
+													<cells>
+														<Link text="{oResultsModel1>oFlow}" press="onPressFlow" emphasized="true"/>
+														<Link text="{oResultsModel1>oPeriod}" press="onPressPeriod" emphasized="true"/>
+														<Text text="{oResultsModel1>oObject}"></Text>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</VBox>
+								</items>
+								<layoutData>
+									<l:GridData span="L4 M4 S12"></l:GridData>
+								</layoutData>
+							</FlexBox>
+						</l:Grid>
+					</VBox>
+					<l:Grid containerQuery="true" position="Center" width="90%">
+						<suite:ChartContainer id="idChartContainer2" title="{i18n>chartTitleBank}" showFullScreen="true" showPersonalization="false"
+							autoAdjustHeight="false" showLegend="true" visible="false">
+							<suite:content>
+								<suite:ChartContainerContent id="idChart3" icon="sap-icon://vertical-stacked-chart" title="{i18n>chartTitle3}">
+									<suite:content>
+										<viz:Popover id="idPopOver3"></viz:Popover>
+										<viz:VizFrame id="idVizFrame3" uiConfig="{applicationSet:'fiori'}" height='400px' width="auto" visible="false" vizType="line"
+											renderComplete="onBankRenderComplete">
+											<viz:dataset>
+												<viz.data:FlattenedDataset data="{/BankBChartSet}">
+													<viz.data:dimensions>
+														<viz.data:DimensionDefinition name="Monthly" value="{MS>Clfiscyear}"/>
+													</viz.data:dimensions>
+													<viz.data:measures>
+														<viz.data:MeasureDefinition name="Net cash flow" value="{Netbal}"/>
+														<viz.data:MeasureDefinition name="Ending Balance" value="{Closebal}"/>
+														<viz.data:MeasureDefinition name="Opening Balance" value="{Openbal}"/>
+													</viz.data:measures>
+												</viz.data:FlattenedDataset>
+											</viz:dataset>
+											<viz:feeds>
+												<viz.feeds:FeedItem id='valueAxisFeed2' uid="valueAxis" type="Measure" values="Opening Balance"/>
+												<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="Net cash flow"/>
+												<viz.feeds:FeedItem id='valueAxisFeed1' uid="valueAxis" type="Measure" values="Ending Balance"/>
+												<viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension" values="Monthly"/>
+											</viz:feeds>
+										</viz:VizFrame>
+									</suite:content>
+								</suite:ChartContainerContent>
+								<suite:ChartContainerContent id="idChart4" icon="sap-icon://table-view" title="{i18n>chartTitle4}">
+									<suite:content>
+										<Table id="table16" items="{/BankBChartSet}" width="auto" updateFinished="onBankRenderComplete">
+											<columns>
+												<Column hAlign="Begin">
+													<Text text="MonthYear"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="Net cash flow"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="Ending Balance"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="Opening Balance"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem >
+													<cells>
+														<Text text="{Clfiscyear}"></Text>
+														<Text text="{path: 'Netbal', formatter:'com.accenture.CashFlow.Utils.Formatter.numFormat'}"/>
+														<Text text="{path: 'Closebal', formatter:'com.accenture.CashFlow.Utils.Formatter.numFormat'}"/>
+														<Text text="{path: 'Openbal', formatter:'com.accenture.CashFlow.Utils.Formatter.numFormat'}"></Text>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</suite:content>
+								</suite:ChartContainerContent>
+							</suite:content>
+							<suite:layoutData>
+								<l:GridData span="L12 M12 S12"></l:GridData>
+							</suite:layoutData>
+						</suite:ChartContainer>
+					</l:Grid>
+					<!--	<List items="{path : '/Z_FI_CASHFLOW_HIST', filters: [{ path: 'rbukrs', operator: 'EQ', value1: '4'}]}">
+						<ObjectListItem title="{MONTH_YEAR}"></ObjectListItem>
+					</List>-->
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

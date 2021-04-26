@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover title="{Name}" class="sapMOTAPopover sapTntToolHeaderPopover" placement="Bottom" initialFocus="email">
+		<Label text="{i18n>txtCompanyCode}"></Label>
+		<MultiComboBox id="mcbCompanyCode" items="{ path: 'FALL>/ZCI_FILTER1'}" width="200px" selectionFinish="onCompanyCode"
+			selectionChange="onCompanyCodeChange">
+			<core:Item key="{FALL>Companycode}" text="{FALL>CompanyCodeDesc}"/>
+		</MultiComboBox>
+		<Label text="{i18n>txtBankCountry}"></Label>
+		<MultiComboBox id="mcbBankCountry" items="{ path: 'FALL>/ZCI_FILTER2'}" width="200px" selectionFinish="onBankCountry" editable="false"
+			selectionChange="onBankFiltersBusy">
+			<core:Item key="{FALL>Bankcountry}" text="{FALL>BCountryDesc}"/>
+		</MultiComboBox>
+		<Label text="{i18n>txtHouseBank}"></Label>
+		<MultiComboBox id="mcbHouseBank" items="{ path: 'FALL>/ZCI_FILTER3'}" width="200px" selectionFinish="onHouseBank" editable="false"
+			selectionChange="onBankFiltersBusy">
+			<core:Item key="{FALL>Housebank}" text="{FALL>HouseBankDesc}"/>
+		</MultiComboBox>
+		<Label text="{i18n>txtBankID}"></Label>
+		<MultiComboBox id="mcbBankID" items="{ path: 'FALL>/ZCI_FILTER4'}" width="200px" selectionFinish="onBankID" editable="false"
+			selectionChange="onBankFiltersBusy">
+			<core:Item key="{FALL>Bankid}" text="{FALL>Bankid}"/>
+		</MultiComboBox>
+	</Popover>
+</core:FragmentDefinition>
