@@ -1,0 +1,10 @@
+Description=GWD
+Type=HTTP
+TrustAll=true
+Authentication=NoAuthentication
+Name=GWD
+URL=https\://dldmz03gwd02.avangrid.net\:44300
+WebIDEUsage=odata_abap,ui5_execute_abap,dev_abap,odata_gen
+WebIDESystem=GWD
+WebIDEEnabled=true
+sap-client=100
