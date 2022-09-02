@@ -1,0 +1,267 @@
+`
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:ui="sap.ui.table">
+	<Panel class="sapUiContentPadding" width="100%">
+		<Toolbar >
+			<Title level="H4" class="PrCss1" text="TBE Info"/>
+		</Toolbar>
+		<content>
+			<l:Grid defaultSpan="L6 M12 S12" vSpacing="1" width="100%">
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label class="selectLabelCss" text="TBE Approval Date:" width="150px"/>
+						<DatePicker class="selectInputBoxCss" width="70%" id="TBEDate"
+							value="{path: 'tab1HeaderModel>/TbeApprovDate', formatter: '.formatter.datechange'}" displayFormat="dd-MM-yyyy" enabled="false">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</DatePicker>
+					</items>
+				</FlexBox>
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label class="selectLabelCss" text="Reqd Onsite Date:" width="150px"/>
+						<DatePicker class="selectInputBoxCss" id="reqdOnsiteDateId" enabled="false"
+							value="{path: 'tab1HeaderModel>/ReqdOnsiteDate', formatter: '.formatter.datechange'}" displayFormat="dd-MM-yyyy" width="70%">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</DatePicker>
+					</items>
+				</FlexBox>
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label class="selectLabelCss" text="Top 3 TBE Ranked Vendor Name"/>
+					</items>
+				</FlexBox>
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label class="selectLabelCss" text="Estimated PO Date:" width="150px"/>
+						<DatePicker class="selectInputBoxCss" id="estimatedPoDateId" width="70%"
+							value="{path: 'tab1HeaderModel>/EstdPoDate' , formatter: '.formatter.datechange'}" displayFormat="dd-MM-yyyy" change="estimatedPoDateChange">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</DatePicker>
+					</items>
+				</FlexBox>
+			</l:Grid>
+			<l:Grid defaultSpan="L6 M12 S12" vSpacing="1" width="100%">
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label text=" "/>
+						<Input value="1 : {tab1HeaderModel>/VendorRank1}" tooltip="{tab1HeaderModel>/VendorRank1}" editable="false">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Input>
+					</items>
+				</FlexBox>
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label class="selectLabelCss" text="Estd Del Lead Time:" width="150px"/>
+						<Input class="selectInputBoxCss" id="estdDelLeadTimeId" placeholder="weeks" value="{path : 'tab1HeaderModel>/EstdDelLeadTime'}"
+							maxLength="3" liveChange="estdDelLeadTimeChange" change="estdDelLeadTimeChange" width="70%">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Input>
+					</items>
+				</FlexBox>
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label text=" "/>
+						<Input value="2 : {tab1HeaderModel>/VendorRank2}" tooltip="{tab1HeaderModel>/VendorRank2}" editable="false">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Input>
+					</items>
+				</FlexBox>
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label class="selectLabelCss" text="Estd Time for Shipping:" width="150px"/>
+						<Input class="selectInputBoxCss" id="estdTimeForShippingId" placeholder="weeks" value="{path : 'tab1HeaderModel>/EstdShipTime' }"
+							maxLength="3" width="70%" liveChange="estdTimeForShippingChange" change="estdTimeForShippingChange" type="Number">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Input>
+					</items>
+				</FlexBox>
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label text=" "/>
+						<Input value="3 : {tab1HeaderModel>/VendorRank3}" tooltip="{tab1HeaderModel>/VendorRank3}" editable="false">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Input>
+					</items>
+				</FlexBox>
+				<FlexBox alignItems="Start" justifyContent="Start">
+					<items>
+						<Label class="selectLabelCss" text="Delivery Float:" width="150px"/>
+						<Input class="selectInputBoxCss" id="deliveryFloatDaysId" width="70%" value="" enabled="false">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Input>
+					</items>
+				</FlexBox>
+			</l:Grid>
+		</content>
+	</Panel>
+	<Panel width="100%" class="sapUiContentPadding" visible="{HeaderModel>/budgetBalanceFlag}">
+		<Toolbar>
+			<Title level="H4" class="PrCss1" text="Budget Information"/>
+			<ToolbarSpacer/>
+			<Title level="H4" class="PrCss1" text="WBS Code:"/>
+			<Text level="H4" class="PrCss1" text="{tab1HeaderModel>/WbsCode}"/>
+			<content></content>
+		</Toolbar>
+		<content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" title="" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
+				<f:content>
+					<Label text="Total Budget Available (USD)"/>
+					<Input id="totalBudgetAvailableId" maxLength="12" value="{tab1HeaderModel>/TotBudget}" change="totalBudgetAvailableChange"/>
+					<Label text="Estimate PO Value (USD)"/>
+					<Input id="estimatePoValueId" maxLength="12" value="{tab1HeaderModel>/EstdPoValue}" change="estimatePoValueChange"></Input>
+					<Label text="Balance (USD)"/>
+					<Input id="balanceId" value="" enabled="false"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Panel>
+	<Panel width="100%" class="sapUiContentPadding" visible="{HeaderModel>/costSavingsFlag}">
+		<Toolbar>
+			<Title level="H4" class="PrCss1" text="Cost Saving and Budget Information"/>
+			<ToolbarSpacer/>
+			<Title level="H4" class="PrCss1" text="WBS Code:"/>
+			<Text level="H4" class="PrCss1" text="{tab1HeaderModel>/WbsCode}"/>
+			<content></content>
+		</Toolbar>
+		<content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" title="" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
+				<f:content>
+					<Label text="Total Quoted Price After Technical Query Confirm"/>
+					<Input id="Currencyid" maxLength="5" value="{tab1HeaderModel>/TqPriceCur}" placeholder="Currency"
+						tooltip="{i18n>detailHeaderCurrency} {i18n>detailHeaderMandatoryField}" showValueHelp="true" valueHelpRequest="onSearchCurrencyValueHelp"
+						valueHelpOnly="true">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Input>
+					<Input id="totalQuotedPriceAfterTechnicalQueryConfirmId" maxLength="12"
+						value="{ path: 'tab1HeaderModel>/TqPrice',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }"
+						change="totalQuotedPriceAfterTechnicalQueryConfirmChanges"/>
+					<Label text="Estimated PO Value"/>
+					<Input id="EstCurrencyid" maxLength="5" value="{tab1HeaderModel>/EstdPoCur}" placeholder="Currency"
+						tooltip="{i18n>detailHeaderCurrency} {i18n>detailHeaderMandatoryField}" showValueHelp="true" valueHelpRequest="onSearchCurrencyValueHelp1"
+						valueHelpOnly="true">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Input>
+					<Input id="estimatePoValueId1" maxLength="12"
+						value="{ path: 'tab1HeaderModel>/EstdPoValue',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }"></Input>
+					<Label text="Total Budget (USD)"/>
+					<Input id="totalBudgetAvailableId1" maxLength="12"
+						value="{ path: 'tab1HeaderModel>/TotBudget',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }"
+						change="totalBudgetAvailableChange1"/>
+					<Label text="Budget Balance (USD)"/>
+					<Input id="balanceId1" enabled="false"
+						value="{ path: 'tab1HeaderModel>/BudBal',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }"></Input>
+					<Label text="Potential Savings (USD)"/>
+					<Input id="potentialSavingsId" enabled="false"
+						value="{ path: 'tab1HeaderModel>/PotSav',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }"></Input>
+					<HBox>
+						<Button id="costSavingCalculate" text="Calculate" press="onPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Button>
+					</HBox>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Panel>
+	<Panel width="100%" class="sapUiNoContentPadding" visible="{HeaderModel>/costSavingsFlag}">
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" labelSpanL="3" labelSpanM="3" adjustLabelSpan="false" emptySpanXL="0"
+			emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
+			<f:content>
+				<Label text="Cost Savings Remarks"></Label>
+				<TextArea id="costSavingsRemarksId" maxLength="255" value="{tab1HeaderModel>/CostSavRmks}" placeholder="Only 255 characters are allowed"
+					growing="true" tooltip="{tab1HeaderModel>/CostSavRmks}" growingMaxLines="7" rows="7"/>
+			</f:content>
+		</f:SimpleForm>
+	</Panel>
+	<Panel width="100%" class="sapUiContentPadding">
+		<Table id="idRankTable" items="{rankingModel>/results}" inset="false" noDataText="No Data">
+			<headerToolbar>
+				<Toolbar class="PrCss3">
+					<Title text="CBE Ranking" class="PrCss4"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns class="columnVisibility">
+				<Column minScreenWidth="Tablet" width="4rem" demandPopin="true">
+					<Text class="tableHeaderCss" text="Vendor Name"/>
+				</Column>
+				<Column minScreenWidth="Tablet" width="2rem" demandPopin="true">
+					<Text class="tableHeaderCss" text="TBE Rank"/>
+				</Column>
+				<Column minScreenWidth="Tablet" width="4rem" demandPopin="true">
+					<Text class="tableHeaderCss" text="TBE Note"/>
+				</Column>
+				<Column minScreenWidth="Tablet" width="2rem" demandPopin="true">
+					<Text class="tableHeaderCss" text="CBE Rank"/>
+				</Column>
+				<Column minScreenWidth="Tablet" width="5rem" demandPopin="true">
+					<Text class="tableHeaderCss" text="CBE Note"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{rankingModel>Name1}" maxLines="2"/>
+					</cells>
+					<cells>
+						<Text text="{rankingModel>Zranking}"/>
+					</cells>
+					<cells>
+						<Text text="{rankingModel>RankingNotesZtec}"/>
+					</cells>
+					<cells>
+						<Select items="{path: 'newRankingModel>/'}" enabled="{newRankingModel>/editable}">
+							<core:Item key="{newRankingModel>Value}" text="{newRankingModel>Value}"/>
+						</Select >
+					</cells>
+					<cells>
+						<TextArea rows="6" placeholder='Add note' width='100%' value="{rankingModel>RankingNotes}" enabled="{rankingModel>editable}"
+							change="onChange"></TextArea>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Panel>
+	<Panel width="100%" class="sapUiNoContentPadding">
+		<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" title="" labelSpanL="3" labelSpanM="3"
+			emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
+			<f:content>
+				<Label text="Recommended Bidder"></Label>
+				<Input value="{tab1HeaderModel>/RecomBidder}" enabled="false" width="100%" tooltip="{tab1HeaderModel>/RecomBidder}"/>
+			</f:content>
+		</f:SimpleForm>
+	</Panel>
+	<Panel width="100%" class="sapUiNoContentPadding">
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" labelSpanL="3" labelSpanM="3" adjustLabelSpan="false" emptySpanXL="0"
+			emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
+			<f:content>
+				<Label text="Buyer Recommendation"></Label>
+				<TextArea id="buyerRecommendationId" value="{tab1HeaderModel>/BuyerRecomTxt}" growing="true" tooltip="{tab1HeaderModel>/BuyerRecomTxt}"
+					growingMaxLines="7" rows="7"/>
+			</f:content>
+		</f:SimpleForm>
+	</Panel>
+</core:FragmentDefinition>
